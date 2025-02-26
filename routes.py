@@ -56,3 +56,19 @@ def metrics():
     data['avg_processing_time'] = result.scalar()
 
     return jsonify(data)
+
+@order_bp.route('/get_order/<int:order_id>', methods=['GET'])
+def get_order(order_id):
+    order = Order.query.get(order_id)
+    if order is None:
+        return jsonify({'message': 'Order not found'}), 404
+
+    order_data = {
+        'id': order.id,
+        'user_id': order.user_id,
+        'total_amount': order.total_amount,
+        'status': order.status.value,
+        'item_ids': json.loads(order.item_ids)
+    }
+
+    return jsonify({'message': 'Order retrieved successfully!', 'data': order_data})
