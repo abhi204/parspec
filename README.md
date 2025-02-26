@@ -32,3 +32,21 @@ Order_id is auto assigned by the database and isn't passed via the create order 
 ## Public API endpoints:
 - https://noisy-resonance-9695.ploomber.app/metrics (GET request)
 - https://noisy-resonance-9695.ploomber.app/create_order (POST request)
+- https://noisy-resonance-9695.ploomber.app/get_order/2460 (GET request)
+
+- The client.py file included in the project can be used to make simultaneous api requests. Example: `python client.py --num_requests=10`
+
+
+## SQL schema (Auto created by SQLAlchemy ORM)
+```
+Field			Type		Null	   Key	    Default	     Extra
+---------------------------------------------------------------------
+'id'			'int'		'NO'	   'PRI'	NULL		 'auto_increment'
+'user_id'		'int'		'NO'	   ''		NULL		 ''
+'total_amount'	'float'		'NO'	   ''		NULL		 ''
+'status'		'enum('PENDING','PROCESSING','COMPLETED')'	 'NO'	''	NULL	''
+'item_ids'		'varchar'	'NO'	   ''		NULL		 ''
+'created_at'	'datetime'	'YES'	   ''	    'now()'	     'DEFAULT_GENERATED'
+'started_at'	'datetime'	'YES'	   ''		NULL		 ''
+'completed_at'	'datetime'	'YES'	   ''		NULL		 ''
+```

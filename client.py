@@ -34,7 +34,7 @@ async def main(url, num_requests):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Send async requests to a URL.')
-    parser.add_argument('--url', type=str, default='https://noisy-resonance-9695.ploomber.app/create_order', help='The URL to send requests to.')
+    parser.add_argument('--url', type=str, default='http://localhost:8080/create_order', help='The URL to send requests to.')
     parser.add_argument('--num_requests', type=int, default=10, help='The number of requests to send.')
 
     args = parser.parse_args()
